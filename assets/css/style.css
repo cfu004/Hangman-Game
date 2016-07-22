@@ -1,0 +1,31 @@
+
+.bg img{
+	background-image: url("assets/images/background.png");
+	/*opacity: 0.5;*/
+	}
+
+.form{
+	color:black;
+}
+
+body {
+	
+
+	text-align: center;
+	color: black;
+	font-family: Helvetica, sans-serif;
+}
+input {
+	border: 2px solid black;
+	font-family: Helvetica, sans-serif;
+	color: black;
+}
+
+#letterfield {
+	font-family: 'Permanent Marker', 'cursive';
+	font-size: 2.0em;
+}
+
+h1 {
+	font-family: 'Permanent Marker', 'cursive';
+}
