@@ -95,9 +95,7 @@ if(!correctguess){
 	    hangman.src = "assets/images/hangman" + looseletterCount + ".jpg";
 	    
 	    document.getElementById("guessleft").innerHTML = "Guess Left:" + (6 - looseletterCount);
-		// var zara = document.createTextNode(6 - looseletterCount);
-		// guessleft.appendChild(zara);
-	    // document.getElementById("guessleft").innerHTML = 6-("guessleft");
+
 
 		}
 
@@ -132,48 +130,13 @@ window.onload = init;
 
 
 
-// var Game = {
-// 	GameStart: function(){
-// 			   for (var i=0; i < questionlist.length; i++){
-// 			   	var looseletterCount = 0;
-// 			   }
-
-// 			   	if(	looseletterCount < 10){
-
-// 			   		for (var j=0; j < 11; j ++){
-
-// 			   			if (questionlist[j].charAt(0) === 'b' || questionlist[j].charAt(1) === 'm' || questionlist[j].charAt(2) === 'w'){
-
-
-// 								console.log('winletterCount');
-// 						}
-
-// 						else if(questionlist[j].charAt(0) === 'b' && questionlist[j].charAt(1) === 'm' && questionlist[j].charAt(2) === 'w')	{
-// 								console.log('winletterCount');
-// 								winCount++;
-// 							}
-							
-// 						else {
-// 							looseletterCount++;
-// 								console.log('looseletter');
-// 							}
-
-
-						
-// 					}
-// 				}
-// 	}
-// }
-		
-
-
 
 </script>
 </head>
 <body>
 
 
-<h1>Homework Hangman<br>
+<h1>Hangman Game<br>
   Guess a Car Brand!</h1>
 <div class="bg" style="opacity:1; background-image:url('assets/images/background.png')">
 
