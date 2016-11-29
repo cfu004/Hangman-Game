@@ -44,22 +44,12 @@ function printletter(){
 
 
 
-	// document.onkeyup = function(event){
-	// 		var letter = String.fromCharCode(event.keyCode).toLowerCase();
-
-	// 		console.log(letter + ' onkeyup');
-			
-	
-	// 	}
 
 
 
 var checkletter = function(){
 
-	// var start = prompt('Please enter a letter');
-	// var check = start.elements[''];
-	// var letter = check.value;
-	// letter = letter.toLowerCase();
+
 	var f = document.letterformular;
 	var b = f.elements["letterbox"];
 	var letter = b.value;
@@ -70,8 +60,7 @@ var checkletter = function(){
 		if(question[i] === letter){
 			letterarray[i] = letter + " ";
 			var correctguess = true;
-			// document.getElementById("letterfield").innerHTML = letter;
-			// console.log(correctguess);
+
 		}
 	b.value = "";
 
@@ -132,39 +121,6 @@ window.onload = init;
 
 
 
-// var Game = {
-// 	GameStart: function(){
-// 			   for (var i=0; i < questionlist.length; i++){
-// 			   	var looseletterCount = 0;
-// 			   }
-
-// 			   	if(	looseletterCount < 10){
-
-// 			   		for (var j=0; j < 11; j ++){
-
-// 			   			if (questionlist[j].charAt(0) === 'b' || questionlist[j].charAt(1) === 'm' || questionlist[j].charAt(2) === 'w'){
-
-
-// 								console.log('winletterCount');
-// 						}
-
-// 						else if(questionlist[j].charAt(0) === 'b' && questionlist[j].charAt(1) === 'm' && questionlist[j].charAt(2) === 'w')	{
-// 								console.log('winletterCount');
-// 								winCount++;
-// 							}
-							
-// 						else {
-// 							looseletterCount++;
-// 								console.log('looseletter');
-// 							}
-
-
-						
-// 					}
-// 				}
-// 	}
-// }
-		
 
 
 
@@ -173,7 +129,7 @@ window.onload = init;
 <body>
 
 
-<h1>Homework Hangman<br>
+<h1>Hangman Game<br>
   Guess a Car Brand!</h1>
 <div class="bg" style="opacity:1; background-image:url('assets/images/background.png')">
 
