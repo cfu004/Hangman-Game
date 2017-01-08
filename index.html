@@ -1,150 +1,136 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<title>A SIMPLE HANGMAN GAME</title>
-<script type="text/javascript">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>A SIMPLE HANGMAN GAME</title>
+    <script type="text/javascript">
+        var questionlist = [
+            ["B", "M", "W"],
+            ["H", "O", "N", "D", "A"],
+            ["S", "A", "A", "B"],
+            ["A", "U", "D", "I"],
+            ["S", "U", "Z", "U", "K", "I"]
+        ]
+
+        var looseletter = 0;
+        var looseletterCount = 0;
+        var winCount = 0;
+        var looseCount = 0;
+        var winletterCount = 0;
+
+
+        var random = Math.floor((Math.random() * (questionlist.length - 1)));
+        var question = questionlist[random];
+        var letterarray = new Array(question.length);
+        var looseletterCount = 0;
+
+        for (var i = 0; i < letterarray.length; i++) {
+            letterarray[i] = "_ ";
+        }
+
+
+        function printletter() {
+            for (var i = 0; i < letterarray.length; i++) {
+                var letterfield = document.getElementById("letterfield");
+                var text = document.createTextNode(letterarray[i]);
+                letterfield.appendChild(text);
+            }
+        }
 
 
 
 
-var questionlist = [
-["B","M","W"],
-["H","O","N","D","A"], 
-["S","A","A","B"], 
-["A","U","D","I"], 
-["S","U","Z","U","K","I"]
-]
-
-var looseletter = 0;
-var looseletterCount = 0;
-var winCount = 0;
-var looseCount = 0;
-var winletterCount = 0;
+        var checkletter = function() {
 
 
-var random = Math.floor((Math.random()*(questionlist.length-1))); 
-var question = questionlist[random];
-var letterarray = new Array(question.length);
-var looseletterCount = 0;
-
-for (var i = 0; i < letterarray.length; i++){
-	letterarray[i] = "_ ";
-}
+            var f = document.letterformular;
+            var b = f.elements["letterbox"];
+            var letter = b.value;
+            letter = letter.toUpperCase();
 
 
-function printletter(){
-	for (var i = 0; i < letterarray.length; i++){
-	var letterfield = document.getElementById("letterfield");
-	var text = document.createTextNode(letterarray[i]);
-	letterfield.appendChild(text);
-	}
-}
+            for (var i = 0; i < question.length; i++) {
+                if (question[i] === letter) {
+                    letterarray[i] = letter + " ";
+                    var correctguess = true;
+
+                }
+                b.value = "";
+
+            }
 
 
 
 
+            var letterfield = document.getElementById("letterfield");
+            letterfield.innerHTML = "";
+            printletter();
 
 
+            if (!correctguess) {
+                var wrongguess = document.getElementById("wrongletter");
+                var text = document.createTextNode(" " + letter);
+                wrongletter.appendChild(text);
+                looseletterCount++;
+                var hangman = document.getElementById("hangman");
+                hangman.src = "assets/images/hangman" + looseletterCount + ".jpg";
 
-var checkletter = function(){
-
-
-	var f = document.letterformular;
-	var b = f.elements["letterbox"];
-	var letter = b.value;
-	letter = letter.toUpperCase();
-
-
-	for (var i = 0; i < question.length; i++){
-		if(question[i] === letter){
-			letterarray[i] = letter + " ";
-			var correctguess = true;
-
-		}
-	b.value = "";
-
-	}
+                document.getElementById("guessleft").innerHTML = "Guess Left:" + (6 - looseletterCount);
 
 
+            }
 
 
+            var guess = true;
+            for (var i = 0; i < letterarray.length; i++) {
+                if (letterarray[i] === "_ ") {
+                    guess = false;
+                }
+            }
+            if (guess) {
+                window.alert("You passed, master~");
+            }
 
-	var letterfield = document.getElementById("letterfield");
-	letterfield.innerHTML=""; 
-	printletter();
+            //once you got six wrong letters, you lose
+            if (looseletterCount === 6) {
+                window.alert("Oh come on~ You can do better than that!!!");
+            }
 
-
-if(!correctguess){
-		var wrongguess = document.getElementById("wrongletter");
-		var text = document.createTextNode(" " + letter);
-		wrongletter.appendChild(text); 
-		looseletterCount++;
-		var hangman = document.getElementById("hangman");
-	    hangman.src = "assets/images/hangman" + looseletterCount + ".jpg";
-	    
-	    document.getElementById("guessleft").innerHTML = "Guess Left:" + (6 - looseletterCount);
-
-
-		}
+        }
 
 
-var guess = true;
-	for (var i = 0; i < letterarray.length; i++){
-		if(letterarray[i] === "_ "){
-			guess = false;
-		}
-	}
-	if(guess){
-		window.alert("You passed, master~");
-	}
-	
-	//once you got six wrong letters, you lose
-	if(looseletterCount === 6){
-		window.alert("Oh come on~ You can do better than that!!!");
-	}
+        function init() {
+            printletter();
+        }
 
-}
-
-
-function init(){
-	printletter();
-}
-
-window.onload = init;
-
-
-
-
-
-
-
-
-</script>
+        window.onload = init;
+    </script>
 </head>
+
 <body>
 
 
-<h1>Hangman Game<br>
-  Guess a Car Brand!</h1>
-<div class="bg" style="opacity:1; background-image:url('assets/images/background.png')">
+    <h1>Hangman Game<br> Guess a Car Brand!</h1>
+    <div class="bg" style="opacity:1; background-image:url('assets/images/background.png')">
 
-<p id="letterfield"></p>
-<form class=form name="letterformular">
-<input name="letterbox" type="text" size="5" maxlength="1">
-<input name="letterbutton" type="button" value="Guess" onClick="checkletter()">
+        <p id="letterfield"></p>
+        <form class=form name="letterformular">
+            <input name="letterbox" type="text" size="5" maxlength="1">
+            <input name="letterbutton" type="button" value="Guess" onClick="checkletter()">
 
-<p id="wrongletter">Wrong Guess:</p>
-<P id="guessleft">Guess Left:</P>
-<img src="assets/images/hangman0.jpg" id="hangman"><br />
-<input name="refresh" type="button" value="New Game" onClick="location.reload()">
-</form>
-</div>
+            <p id="wrongletter">Wrong Guess:</p>
+            <P id="guessleft">Guess Left:</P>
+            <img src="assets/images/hangman0.jpg" id="hangman"><br />
+            <input name="refresh" type="button" value="New Game" onClick="location.reload()">
+        </form>
+    </div>
 
-<div>
-	<img src="assets/images/background.jpg">
-</div>
+    <div>
+        <img src="assets/images/background.jpg">
+    </div>
 
 
 </body>
+
 </html>
